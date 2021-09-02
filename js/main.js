@@ -5,28 +5,26 @@ const searchBtn = () => {
     const url = `https://openlibrary.org/search.json?q=${searchText}`
     fetch(url)
         .then(res => res.json())
-        .then(data => displaySearchResult(data.docs))
+        .then(data => searchResult(data.docs))
 
 };
-const displaySearchResult = book => {
-    const searchResult = document.getElementById("display-result");
-    book.forEach(book => {
-        const div = document.createElement('div')
-        div.innerHTML = `
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            <div class="col">
-                <div class="card">
-                    <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        </div>
-                </div>
-            </div>
+const searchResult = book => {
+    const searchResult = document.getElementById("display-result")
+    book.forEach(book =>{
+        const div = document.createElement('div');
+        div.classList.add('col');
+        div.innerHTML=`
+        <div class="col">
+        <div class="card h-100">
+          <img src="..." class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">${book.title.slice(0, 25)}</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
         </div>
-       `
+      </div>
+        `
         searchResult.appendChild(div)
-    });
+    })
 }
-
 
