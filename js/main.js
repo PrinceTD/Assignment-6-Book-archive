@@ -4,6 +4,7 @@ const searchBtn = () => {
     const searchText = searchFild.value;
     // clear data
     searchFild.value = "";
+    /* error handing */
     if(searchText=== ""){
         error.innerHTML = `
             <h3 class="text-danger mt-5"> Search filed cannot be empty!</h3>
@@ -18,11 +19,13 @@ const searchBtn = () => {
     }
 
 };
+
 const searchResult = book => {
-    console.log(book)
-    const error = document.getElementById('error')
+    
+    const error = document.getElementById('error');
     const searchResult = document.getElementById("display-result");
     searchResult.textContent="";
+     /* error handing */
     if(book.length === 0){
         error.innerHTML=  `
         <h3 class="text-danger mt-5">Show no result found!!! </h3>
@@ -50,12 +53,14 @@ const searchResult = book => {
       </div>
         `
         searchResult.appendChild(div)
+    
+        
         // total found book detils show
-        const foundTotal = document.getElementById('found-total');
-        const span = document.createElement('span');
-        span.innerHTML=`
-        <span>${book.length}</span>
-        ` 
-        foundTotal.appendChild(span);
+        // const foundTotal = document.getElementById('found-total');
+        // const span = document.createElement('span');
+        // span.innerHTML=`
+        // <span>${book.length}</span>
+        // ` 
+        // foundTotal.appendChild(span);
     })
 };
