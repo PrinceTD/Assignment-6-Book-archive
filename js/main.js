@@ -1,6 +1,5 @@
 const searchBtn = () => {
     const error = document.getElementById('error');
-  
     const searchFild = document.getElementById('search-input');
     const searchText = searchFild.value;
     // clear data
@@ -22,7 +21,7 @@ const searchBtn = () => {
 };
 
 const searchResult = book => {
-    // console.log(book)
+
     const error = document.getElementById('error');
     const searchResult = document.getElementById("display-result");
     searchResult.textContent="";
@@ -35,9 +34,10 @@ const searchResult = book => {
     else{
         error.innerHTML= "";
     }
+    // total book found result
     const foundTotal = document.getElementById("found-total");
     foundTotal.innerText= `${book.length}`
-
+    // forEach
     book.forEach(book =>{
         const div = document.createElement('div');
         div.classList.add('col');
